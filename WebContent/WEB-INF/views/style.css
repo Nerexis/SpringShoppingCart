@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+	font-family: 'Quicksand', arial;
+
+    text-shadow: 0px 0px 5px black;
+}
+body {
+	margin: 0px;
+	background-color: #7F4C4C;
+}
+.headerContainer {
+	background-color: #7F2626;
+	width: 100%;
+	box-shadow: 0px 0px 50px 5px black;
+	margin-bottom: 20px;
+}
+.leftMenu {
+	float: left;
+	width: 25%;
+	padding: 25px;
+	text-align: center;
+	font-size: 22px;
+	
+}
+.leftMenu .menuPanel {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.leftMenu ul {
+	padding: 0px;
+}
+.leftMenu li {
+	list-style:none;
+	padding: 10px;
+	box-radius: 10px;
+}
+.leftMenu li:hover {
+	background-color: #7F2626;
+	
+}
+.menuPanel {
+	width: 100%;
+	color: white;
+	background-color: #d03d3d; /*#FF4C4C;*/
+	box-shadow: 1px 0px 1px 1px black;
+	padding: 25px;
+	border-radius: 15px 50px;
+	margin-bottom: 15px;
+}
+.contentContainer {
+	float: left;
+	width: 75%;
+	padding: 25px;
+}
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: red;
+}
+h1 {	
+	color: white;
+	text-align: center;
+	margin: 0px;
+}
+.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 0px;
+    border-spacing: 0px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.centered {
+	text-align: center;
+}
+.dataTable thead tr {
+	/*border-color: #CC3D3D;*/
+	box-shadow: 0px 2px 5px #1b1b1b;
+	box-radius: 10px 10px;
+}
+.dataTable thead td {
+	background-color: #7F2626;
+}
+.dataTable td {
+	background-color: #A54142;
+	padding: 10px;
+}
+form {
+	display: inline-block;
+	text-align: center;
+}
