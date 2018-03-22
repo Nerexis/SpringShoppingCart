@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Authority;
+import model.CartEntry;
 import model.Product;
 import model.User;
+import service.CartEntryService;
 import service.ProductService;
 import service.UserService;
 
@@ -33,6 +36,9 @@ public class RootController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private CartEntryService cartEntryService;
 
 	@GetMapping(value = {"/welcome","/"}, produces="text/html")
 	public String welcome(Model model) {
@@ -90,8 +96,8 @@ public class RootController {
 		return "register";
 	}
 	@RequestMapping(value="/productRemove")
-	public ModelAndView productRemove(@RequestParam(value="id_product") int id) {
-		productService.remove(id);
+	public ModelAndView productRemove(@RequestParam(value="id_product") int idProduct) {
+		productService.remove(idProduct);
 		return new ModelAndView("redirect:/productList");
 	}
 	@RequestMapping(value = "/registerAction")
@@ -101,10 +107,14 @@ public class RootController {
 		System.out.println("Registering new user...");
 
 		User user = new User();
+
+		Authority authority = new Authority("ROLE_ADMIN"); // debug
+		authority.setUser(user);
+
 		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(password));
 		user.setEnabled(1);
-		user.getAuthorities().add(new Authority("ROLE_USER"));
+		user.getAuthorities().add(authority);
 		try {
 			userService.save(user);
 		} catch(Exception e) {
@@ -115,9 +125,36 @@ public class RootController {
 		return registerStatus(model,"Rejestracja powiod³a siê!");
 	}
 	@RequestMapping(value = "/registerStatus")
-	public String registerStatus(Model model, @RequestParam String message) {
+	public String registerStatus(Model model, @RequestParam(value="message") String message) {
 		model.addAttribute("message", message);
 		return "registerStatus";
+	}
+	@RequestMapping(value = "/error")
+	public String errorMessage(Model model, @RequestParam(value="message") String message) {
+		model.addAttribute("message", message);
+		return "error";
+	}
+
+	@RequestMapping(value = "/cartEntryAdd")
+	public ModelAndView cartEntryAdd(Model model, @RequestParam(value="id_product") int idProduct,
+			@RequestParam(value="quantity") int quantity) {
+		System.out.println("Cart entry add");
+
+		if(!SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+			return new ModelAndView("403");
+		}
+
+		try {
+			System.out.println("Adding cart entry...");
+			CartEntry cartEntry = new CartEntry();
+			cartEntry.setProduct(productService.getProductById(idProduct));
+			cartEntry.setQuantity(quantity);
+			cartEntry.setUser(userService.getByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+			cartEntryService.save(cartEntry);
+		} catch(Exception e) {
+			return new ModelAndView("error", "", model);
+		}
+		return new ModelAndView("redirect:/productList");
 	}
 
 }

@@ -3,9 +3,13 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,7 +18,9 @@ import javax.persistence.Table;
 @Table(name = "USER")
 public class User {
 	@Id
-	@Column(name="ID_USER")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID_USER",unique=true, nullable = false)
 	int id;
 
 	public int getId() {
@@ -57,7 +63,10 @@ public class User {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+
+	//@Column
+	@ElementCollection
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
 	private Set<Authority> authorities = new HashSet<>();
 
 	public Set<Authority> getAuthorities() {

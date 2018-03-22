@@ -11,22 +11,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="AUTHORITY")
-public class Authority {
-	public Authority() {
-		//noop
+@Table(name="CART_ENTRY")
+public class CartEntry {
+
+	public CartEntry() {
+		// noop
 	}
 
-	public Authority(String authority) {
-		this.setAuthority(authority);
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name = "ID_AUTHORITY",unique=true, nullable = false)
+	@Column(name = "ID_CART_ENTRY",unique=true, nullable = false)
 	private int id;
 
-	//@Column(name="ID_USER")
+	@ManyToOne(optional=false)
+	@JoinColumn(name="ID_PRODUCT")
+	private Product product;
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	@ManyToOne(optional=true)
+	@JoinColumn(name="ID_ORDER")
+	private Order order;
+
 	@ManyToOne(optional=false)
 	@JoinColumn(name="ID_USER")
 	private User user;
@@ -39,15 +52,14 @@ public class Authority {
 		this.user = user;
 	}
 
-	@Column(name="ROLE")
-	String authority;
+	@Column(name="QUANTITY")
+	private int quantity;
 
-	public String getAuthority() {
-		return authority;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
-
 }

@@ -46,4 +46,12 @@ public class ProductDaoImpl implements ProductDao {
 		}
 	}
 
+	@Override
+	public Product getProductById(int idProduct) {
+		TypedQuery<Product> query = sessionFactory.getCurrentSession().createQuery(
+				"from Product p WHERE p.idProduct = :idProduct",Product.class);
+		query.setParameter("idProduct", idProduct);
+		return query.getSingleResult();
+	}
+
 }

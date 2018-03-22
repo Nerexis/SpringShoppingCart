@@ -39,4 +39,10 @@ public class ProductServiceImpl implements ProductService {
 		productDao.remove(id);
 	}
 
+	@Override
+	@Transactional
+	public Product getProductById(int idProduct) {
+		return productDao.getProductById(idProduct);
+	}
+
 }

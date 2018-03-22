@@ -16,13 +16,13 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "ID_PRODUCT",unique=true, nullable = false)
-	Integer id;
+	Integer idProduct;
 
 	public Integer getId() {
-		return id;
+		return idProduct;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		this.idProduct = id;
 	}
 
 	@Column(name = "NAME")
@@ -52,6 +52,15 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	@Column(name="QUANTITY")
+	private int quantity;
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 }

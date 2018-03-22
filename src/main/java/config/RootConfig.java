@@ -26,6 +26,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import model.Authority;
+import model.CartEntry;
+import model.Order;
 import model.Product;
 import model.User;
 @Configuration
@@ -64,7 +66,7 @@ public class RootConfig {
 		props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(User.class, Authority.class, Product.class);
+		factoryBean.setAnnotatedClasses(User.class, Authority.class, Product.class, Order.class, CartEntry.class );
 
 
 		return factoryBean;
