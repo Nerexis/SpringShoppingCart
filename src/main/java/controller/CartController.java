@@ -39,12 +39,23 @@ public class CartController {
 	}
 
 	@PostMapping(value = "/cartChangeQuantity")
-	public String cartEntryChangeQuantity(Model model,
+	public ModelAndView cartEntryChangeQuantity(ModelAndView model,
 			@RequestParam(value = "idCartEntry") int cartEntryId,
 			@RequestParam(value = "newQuantity") int newQuantity) {
 		System.out.println("Cart entry change quantity");
-		cartEntryService.changeQuantity(cartEntryId, newQuantity);
-		return "redirect:/cartEntries";
+		try {
+			cartEntryService.changeQuantity(cartEntryId, newQuantity);
+
+		} catch (Exception e) {
+			ModelAndView errorMsg = new ModelAndView();
+			errorMsg.setViewName("error");
+			errorMsg.addObject("message", e.getMessage());
+			return errorMsg;
+		}
+
+		model.setViewName("redirect:/cartEntries");
+		return model;
+		// return "redirect:/cartEntries";
 	}
 
 	@RequestMapping(value = "/cartEntryAdd")

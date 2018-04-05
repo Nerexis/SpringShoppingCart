@@ -6,10 +6,10 @@
 	<div class="menuPanel">
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h3><a href='<c:url value="/cartEntries"/>'>Twój koszyk</a></h3>
-		<ul>
-			<li>
+		<li>
+			<ul>
 			     <c:forEach items="${cartEntries}" var="cartEntry">
-                    <ul>
+                    <li>
                         <span>${cartEntry.quantity}</span> 
                         <span>x</span> 
                         <span>${cartEntry.product.name}</span>
@@ -20,10 +20,11 @@
                         </span>
                         
                     
-                    </ul>
+                    </li>
                  </c:forEach>
-			</li>
-		</ul>
+			</ul>
+		</li>
+		<p>Miłych zakupów :)</p>
 		</c:if>
 		<c:if test="${pageContext.request.userPrincipal.name == null}">
 			<p>Zaloguj się by dodać produkty do koszyka :)</p>

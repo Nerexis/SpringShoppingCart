@@ -13,6 +13,35 @@
 				<h1>Witamy w sklepie internetowym!</h1>
 			</div>
 			<div class="menuPanel">
+			
+			<p>
+				<p>Projekt sklepu internetowego w Spring Framework<br/>
+				Autor: Damian Winnicki</p>
+				
+				<p>Podczas tworzenia projektu poznałem kilka nowych technologii, oraz  podstawowy ich użycia m. in:
+				<ul>
+				
+				<li>- podstawy szkieletu aplikacji webowej w Spring Framework MVC v. 5</li>
+				<li>- tzw. tworzenie CRUD / DAO przy użyciu biblioteki Hibernate, oraz języka HQL</li>
+				<li>- tworzenia widoków .jsp, z użyciem języka JSTL, taglibs</li>
+				<li>- implementacja systemu logowania, przy użyciu pakietu Spring Security z weryfikacją użytkowników w bazie danych</li>
+				<li>- praktyczne wykorzystanie Maven </li>
+				<li>- operacje na zmiennych przekazywanych z modelu do widoku</li>
+				<li>- ogólne wykorzystanie modelu MVC, przy tworzeniu aplikacji webowej</li>
+				</ul>
+				</p>
+				<p>Projekt nie jest w pełni skończony, ponieważ jeszcze brakuje funkcjonalności dot. składania zamówienia, 
+				czy administracji.</p>
+				
+				<p>
+				Instalacja:
+				- projekt można otworzyć w Eclipse IDE
+				- należy wykonać skrypt z folderu sql, wymagana baza MySQL 
+				- konfiguracja aplikacji do połączenia z bazą jest w pliku db.properties
+				</p>	
+			</p>
+			</br/></br/>
+			
 			<p>Lorem ipsum dolor sit amet tellus sodales nulla. Duis non ante ullamcorper wisi vel blandit id, dolor. Ut sit amet, magna. Integer adipiscing mauris. Nunc justo. Vestibulum risus libero, accumsan et, feugiat augue at sapien. Donec viverra semper nisl, tristique magna. Sed diam neque vitae fringilla eget, elementum ultrices. Vestibulum vitae odio at sem. Quisque eu libero. Duis hendrerit eget, lacinia turpis id risus. Phasellus urna vitae wisi at eros cursus at, pretium eget, aliquet nulla, placerat porta nisl. Nam consectetuer ut, metus. Integer convallis viverra, dui quis felis neque, congue eget, elementum nulla. Aliquam interdum viverra. Pellentesque habitant morbi tristique senectus et malesuada arcu dolor, luctus augue odio eget sem pede lobortis urna. Quisque porta turpis sagittis lorem. Vestibulum quam auctor mattis. Integer eros ac posuere cubilia Curae, Sed dolor. Vestibulum tincidunt. Fusce congue. Proin gravida elit. Mauris ut mi. Cras rhoncus laoreet vulputate accumsan. Fusce ligula. Sed placerat id, mattis metus sed nulla dolor sit amet nibh. Fusce venenatis consequat. Cum sociis natoque penatibus et ultrices posuere cubilia Curae, Mauris ac felis ac metus. Sed sagittis urna. Nam.</p>
 
 <p>Praesent in elit. Pellentesque habitant morbi tristique dapibus, accumsan lectus sit amet pede. Vestibulum scelerisque. Vestibulum ante libero dui, eget leo at orci at adipiscing elit. In hac habitasse platea dictumst. Quisque iaculis, purus et interdum euismod nulla a nunc. Sed faucibus, tortor orci luctus quam hendrerit magna dictum justo a arcu. Sed congue, sem at urna ut leo vitae tellus tristique senectus et tellus. Donec vel purus. Pellentesque ante. Duis neque ante, sagittis tortor. Nullam in sollicitudin leo luctus quis, velit. Nunc non felis. Curabitur ut lorem. Cras a diam. Ut sit amet dolor. Nulla aliquet ipsum. Integer est. Vivamus ut felis. Maecenas semper eu, dapibus nisl pellentesque quis, convallis nisl. Curabitur lacinia eget, aliquet malesuada, arcu a luctus id, libero. In purus consectetuer arcu elementum vitae, vehicula viverra, egestas turpis. Lorem ipsum nibh, volutpat ut, nunc. Integer neque sollicitudin eu, ullamcorper convallis. Praesent est eu odio. Quisque at tortor. In pretium porttitor. Nulla dolor non ipsum. Fusce commodo nec, pharetra eget, dolor. Pellentesque nibh porta laoreet. Nam in faucibus venenatis blandit tempus nunc. Vivamus iaculis, purus non odio.</p>
