@@ -14,6 +14,18 @@ body {
 	box-shadow: 0px 0px 50px 5px black;
 	margin-bottom: 20px;
 }
+.headerContent div {
+}
+.headerContentLeft {
+	float: left;
+	display: inline-flex;
+}
+.headerContentRight {
+	float: right;	
+}
+.headerContentRight form {
+	display: inline-flex;
+}
 .leftMenu {
 	float: left;
 	width: 25%;
@@ -52,16 +64,18 @@ body {
 	width: 75%;
 	padding: 25px;
 }
-a:link, a:visited {
+.link, .link:link, .link:visited, a:link, a:visited {
     background-color: #f44336;
     color: white;
     padding: 10px;
     text-align: center; 
     text-decoration: none;
     display: inline-block;
+    border: 0px;
+    font-size: inherit;
 }
 
-a:hover, a:active {
+.link:hover, .link:active, a:hover, a:active {
     background-color: red;
 }
 h1 {	
@@ -91,7 +105,16 @@ h1 {
 	background-color: #A54142;
 	padding: 10px;
 }
+.clearBoth {
+	clear: both;
+}
+.fullWidth {
+	width: 100%;
+}
 form {
 	display: inline-block;
 	text-align: center;
+}
+#form-logout {
+	float: right;
 }

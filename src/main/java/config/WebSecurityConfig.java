@@ -19,14 +19,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @ComponentScan
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-	//@Qualifier("userDetailsService")
+	// @Qualifier("userDetailsService")
 	private UserDetailsService userService;
 
-	@Autowired
-	private SimpleAuthenticationSuccessHandler authSuccess;
-
-	@Autowired
-	private SimpleAuthenticationFailureHandler authFailure;
+	/*
+	 * @Autowired private SimpleAuthenticationSuccessHandler authSuccess;
+	 * 
+	 * @Autowired private SimpleAuthenticationFailureHandler authFailure;
+	 */
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -34,24 +34,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configure(AuthenticationManagerBuilder auth)
+			throws Exception {
 		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
-		.antMatchers(HttpMethod.POST).permitAll()
-		.antMatchers("/resources/**","/register**","/welcome","/login**","/product**").permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
-		.and()
-		.logout()
-		.logoutUrl("/logout")
-		.permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.POST).permitAll()
+				.antMatchers("/resources/**", "/register**", "/welcome", "/",
+						"/login**", "/product**")
+				.permitAll().anyRequest().authenticated().and().formLogin()
+				.loginPage("/login").permitAll().and().logout()
+				.logoutUrl("/logout").permitAll();
 
 	}
 }

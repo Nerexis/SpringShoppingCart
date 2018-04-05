@@ -11,24 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="AUTHORITY")
+@Table(name = "AUTHORITY")
 public class Authority {
 	public Authority() {
-		//noop
+		// noop
 	}
 
 	public Authority(String authority) {
 		this.setAuthority(authority);
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name = "ID_AUTHORITY",unique=true, nullable = false)
+	@Column(name = "ID_AUTHORITY", unique = true, nullable = false)
 	private int id;
 
-	//@Column(name="ID_USER")
-	@ManyToOne(optional=false)
-	@JoinColumn(name="ID_USER")
+	// @Column(name="ID_USER")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_USER")
 	private User user;
 
 	public User getUser() {
@@ -39,7 +40,7 @@ public class Authority {
 		this.user = user;
 	}
 
-	@Column(name="ROLE")
+	@Column(name = "ROLE")
 	String authority;
 
 	public String getAuthority() {

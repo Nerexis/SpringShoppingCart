@@ -20,7 +20,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@Column(name = "ID_USER",unique=true, nullable = false)
+	@Column(name = "ID_USER", unique = true, nullable = false)
 	int id;
 
 	public int getId() {
@@ -31,7 +31,7 @@ public class User {
 		this.id = id_user;
 	}
 
-	@Column(name="USERNAME")
+	@Column(name = "USERNAME")
 	String username;
 
 	public String getUsername() {
@@ -42,7 +42,7 @@ public class User {
 		this.username = username;
 	}
 
-	@Column(name="PASSWORD")
+	@Column(name = "PASSWORD")
 	String password;
 
 	public String getPassword() {
@@ -53,20 +53,20 @@ public class User {
 		this.password = password;
 	}
 
-	@Column(name="ENABLED")
+	@Column(name = "ENABLED")
 	int enabled;
 
 	public boolean isEnabled() {
-		return ( (enabled>0) ? true : false);
+		return ((enabled > 0) ? true : false);
 	}
 
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
 
-	//@Column
+	// @Column
 	@ElementCollection
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authority> authorities = new HashSet<>();
 
 	public Set<Authority> getAuthorities() {

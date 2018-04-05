@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.User;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 	@Autowired
@@ -21,8 +22,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getByUsername(String name) {
-		final TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(
-				"from User u WHERE u.username = :name ", User.class);
+		final TypedQuery<User> query = sessionFactory.getCurrentSession()
+				.createQuery("from User u WHERE u.username = :name ",
+						User.class);
 		query.setParameter("name", name);
 		return query.getSingleResult();
 
@@ -30,8 +32,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> list() {
-		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+		TypedQuery<User> query = sessionFactory.getCurrentSession()
+				.createQuery("from User");
 		return query.getResultList();
+	}
+
+	@Override
+	public void update(User user) {
+		sessionFactory.getCurrentSession().update(user);
 	}
 
 }

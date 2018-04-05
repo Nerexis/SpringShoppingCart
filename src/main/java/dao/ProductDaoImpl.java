@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.Product;
+
 @Repository
 public class ProductDaoImpl implements ProductDao {
 	@Autowired
@@ -21,9 +22,14 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
+	public void update(Product product) {
+		sessionFactory.getCurrentSession().update(product);
+	}
+
+	@Override
 	public List<Product> list() {
-		TypedQuery<Product> query = sessionFactory.getCurrentSession().createQuery(
-				"from Product",Product.class);
+		TypedQuery<Product> query = sessionFactory.getCurrentSession()
+				.createQuery("from Product", Product.class);
 		return query.getResultList();
 	}
 
@@ -34,22 +40,23 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void remove(int id) {
-		//Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
-		TypedQuery query = sessionFactory.getCurrentSession().createQuery(
-				"delete from Product p WHERE p.id = :id");
+		// Transaction transaction =
+		// sessionFactory.getCurrentSession().beginTransaction();
+		TypedQuery<?> query = sessionFactory.getCurrentSession()
+				.createQuery("delete from Product p WHERE p.id = :id");
 		query.setParameter("id", id);
 		try {
 			query.executeUpdate();
-			//transaction.commit();
-		} catch(Exception e) {
-			//transaction.rollback();
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 
 	@Override
 	public Product getProductById(int idProduct) {
-		TypedQuery<Product> query = sessionFactory.getCurrentSession().createQuery(
-				"from Product p WHERE p.idProduct = :idProduct",Product.class);
+		TypedQuery<Product> query = sessionFactory.getCurrentSession()
+				.createQuery("from Product p WHERE p.idProduct = :idProduct",
+						Product.class);
 		query.setParameter("idProduct", idProduct);
 		return query.getSingleResult();
 	}

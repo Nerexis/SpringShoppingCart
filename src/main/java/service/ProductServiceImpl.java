@@ -45,4 +45,19 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getProductById(idProduct);
 	}
 
+	@Override
+	@Transactional
+	public void addNewProduct(String name, String description, double price) {
+		Product product = new Product();
+		product.setName(name);
+		product.setDescription(description);
+		product.setPrice(price);
+		this.save(product);
+	}
+
+	@Override
+	public void update(Product product) {
+		productDao.update(product);
+	}
+
 }

@@ -10,7 +10,7 @@
 	
 		<div class="contentContainer">
 			<div class="menuPanel">
-				<h1>Rejestracja konta</h1>
+				<h1>Dodaj nowy produkt</h1>
 			</div>
 			<div class="menuPanel centered">
 				<form action='<c:url value="/productAddAction"/>' method="post" id="productAddForm">
@@ -25,7 +25,7 @@
 					  </tr>
 					  <tr>
 					    <td>Cena: </td>
-					    <td><input type="number" min="0" name="price" required></td>
+					    <td><input type="number" step="0.01" pattern="\d+(\.\d{2})?" required></td>
 					  </tr>			  
 					  <tr>
 					    <td colspan="2"><button type="submit">Dodaj produkt</button></td>

@@ -12,7 +12,7 @@
 	
 		<div class="contentContainer">
 			<div class="menuPanel">
-				<h1>Witamy w sklepie internetowym!</h1>
+				<h1>Nasza oferta :)</h1>
 			</div>
 			<div class="menuPanel">
 				<table class="dataTable">
@@ -37,9 +37,10 @@
 							<td>${product.price} PLN</td>
 							<td class="centered">
 					              <form action='<c:url value="/cartEntryAdd"/>' method="post">
-					                  <input type="number" name="quantity" value="1" min="1" size="5" class="centered"></input>
-                                      <input type="submit" value="Dodaj do koszyka"></input>
-                                      <input type="hidden" name="id_product" value="${product.id}"></input>
+					                  <input type="number" name="quantity" 
+					                       step="1" value="1" min="1" max='${product.quantity}' size="5" class="centered"></input>
+                                      <input type="submit" class="link" value="Dodaj do koszyka"></input>
+                                      <input type="hidden" name="idProduct" value="${product.id}"></input>
                                       <input type="hidden" name="${_csrf.parameterName}"
                                           value="${_csrf.token}" />                                       
                                   </form>
@@ -47,8 +48,8 @@
 							<security:authorize access="hasAnyRole('ADMIN')">
 								<td class="centered">
 									<form action='<c:url value="/productRemove"/>' method="post">
-										<input type="submit" value="Usuń"></input>
-										<input type="hidden" name="id_product" value="${product.id}"></input>										
+										<input type="submit" class="link" value="Usuń"></input>
+										<input type="hidden" name="idProduct" value="${product.id}"></input>										
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />										
 									</form>

@@ -15,14 +15,20 @@
 <div class="headerContainer">
 	<h1>Sklep internetowy</h1>
 	<div class="headerContent">
-		<a href="${pageContext.request.contextPath}/welcome">Strona główna</a>
-		<a href="${pageContext.request.contextPath}/productList">Produkty</a>
-		<c:if test="${pageContext.request.userPrincipal.name != null}">		
-			<a href="${pageContext.request.contextPath}/productAdd">Dodaj produkt</a> 
+	    <div class="headerContentLeft">
+			<a href="${pageContext.request.contextPath}/welcome">Strona główna</a>
+			<a href="${pageContext.request.contextPath}/productList">Produkty</a>		
+			<c:if test="${pageContext.request.userPrincipal.name != null}">		
+				<a href="${pageContext.request.contextPath}/productAdd">Dodaj produkt</a>
+		    </c:if>
+		</div>
+		<div class="headerContentRight">
+		 <c:if test="${pageContext.request.userPrincipal.name != null}">
+			<form method="post" action="${pageContext.request.contextPath}/logout" id="form-logout">
+			<a href='<c:url value="/cartEntries"/>'>Mój koszyk</a>
 		    <a href="#">
 		         Zalogowano jako ${pageContext.request.userPrincipal.name}!</a>
-			<form method="post" action="${pageContext.request.contextPath}/logout" id="form-logout">
-				<button type="submit">Wyloguj</button>
+				<button type="submit" class="link">Wyloguj</button>
 			    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>         
 			</form>			
 		 </c:if>
@@ -30,7 +36,8 @@
 			    <a href="${pageContext.request.contextPath}/login">Login</a>
 			<a href="${pageContext.request.contextPath}/register">Rejestracja</a>
 		 </c:if>
-        
+        </div>
+        <div class="clearBoth"></div>
 	</div>
 </div>
 

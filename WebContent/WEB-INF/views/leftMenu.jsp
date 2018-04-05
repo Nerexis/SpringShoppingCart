@@ -5,9 +5,24 @@
 <div class="leftMenu">
 	<div class="menuPanel">
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h3>Twój koszyk</h3>
+		<h3><a href='<c:url value="/cartEntries"/>'>Twój koszyk</a></h3>
 		<ul>
-			<li>TODO</li>
+			<li>
+			     <c:forEach items="${cartEntries}" var="cartEntry">
+                    <ul>
+                        <span>${cartEntry.quantity}</span> 
+                        <span>x</span> 
+                        <span>${cartEntry.product.name}</span>
+                        <span>
+                            =
+                                <span>${cartEntry.quantity*cartEntry.product.price}</span>
+                            PLN
+                        </span>
+                        
+                    
+                    </ul>
+                 </c:forEach>
+			</li>
 		</ul>
 		</c:if>
 		<c:if test="${pageContext.request.userPrincipal.name == null}">

@@ -6,5 +6,13 @@ import model.CartEntry;
 
 public interface CartEntryDao {
 	void save(CartEntry cartEntry);
-	List<CartEntry> list(int userId);
+
+	void update(CartEntry cartEntry);
+
+	List<CartEntry> listNonOrdered(String username);
+
+	void remove(int cartEntryId);
+
+	CartEntry getById(int cartEntryId);
+
 }
